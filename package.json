@@ -42,7 +42,7 @@
         "koa-session": "^6.4.0",
         "koa-static": "^5.0.0",
         "unplugin-fonts": "^1.1.1",
-        "vite": "^5.3.3",
+        "vite": "^5.3.4",
         "vite-plugin-vuetify": "^2.0.3",
         "yargs": "^17.7.2"
     },
