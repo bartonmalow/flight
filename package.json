@@ -22,7 +22,7 @@
     "dependencies": {
         "@koa/cors": "^5.0.0",
         "@koa/router": "^12.0.1",
-        "@vitejs/plugin-vue": "^5.0.5",
+        "@vitejs/plugin-vue": "^5.1.1",
         "@vue/language-plugin-pug": "^2.0.26",
         "core-js": "^3.37.1",
         "dotenv": "^16.4.5",
