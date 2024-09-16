@@ -22,12 +22,12 @@
     "dependencies": {
         "@koa/cors": "^5.0.0",
         "@koa/router": "^12.0.1",
-        "@vitejs/plugin-vue": "^5.0.5",
+        "@vitejs/plugin-vue": "^5.1.2",
         "@vue/language-plugin-pug": "^2.0.29",
 
-        "core-js": "^3.37.1",
+        "core-js": "^3.38.1",
         "dotenv": "^16.4.5",
-        "esbuild": "^0.23.0",
+        "esbuild": "^0.23.1",
         "fast-glob": "3.3.2",
         "ioredis": "^5.4.1",
         "koa": "^2.15.3",
@@ -43,8 +43,8 @@
         "koa-session": "^6.4.0",
         "koa-static": "^5.0.0",
         "unplugin-fonts": "^1.1.1",
-        "vite": "^5.3.4",
-        "vite-plugin-vuetify": "^2.0.3",
+        "vite": "^5.4.2",
+        "vite-plugin-vuetify": "^2.0.4",
         "yargs": "^17.7.2"
     },
     "devDependencies": {
