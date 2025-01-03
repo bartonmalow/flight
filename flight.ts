@@ -3,7 +3,7 @@
 import Koa from 'koa'
 import Router from '@koa/router'
 import fg from 'fast-glob'
-import path, { resolve } from 'path'
+import path from 'path'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
@@ -13,9 +13,7 @@ import cluster from 'cluster'
 import os from 'os'
 import { exec } from 'child_process'
 import serve from 'koa-static'
-import cache from 'koa-redis-cache' // Import the middleware
 import session from 'koa-session'
-import RedisStore from 'koa-redis'
 import Redis from 'ioredis'
 // import send from 'koa-send'
 // import historyFallback from 'koa-connect-history-api-fallback'
@@ -59,22 +57,22 @@ if (cluster.isPrimary) {
     app.keys = ['//input example secret key//']
 
     const SESSION_CONFIG = {
-        // Session configuration options
-        // For example, to change the cookie name:
-        key: 'flightApp', // default
-        maxAge: 86400000, // cookie's expire time, 24 hours in milliseconds
-        // autoCommit: true, /** (boolean) automatically commit headers (default true) */
-        // overwrite: true, /** (boolean) can overwrite or not (default true) */
-        // httpOnly: true, /** (boolean) httpOnly or not (default true) */
-        // signed: true, /** (boolean) signed or not (default true) */
-        // rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
-        // renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
-        // secure: false, /** (boolean) secure cookie*/
-        sameSite: true /** (string) session cookie sameSite options (default null, don't set it) */,
-        path: '/' /** (string) session cookie path */,
-        store: RedisStore({
-            client: redis
-        })
+        key: 'flightApp',
+        maxAge: 86400000,
+        sameSite: true,
+        path: '/',
+        store: {
+            get: async (key: string) => {
+                const result = await redis.get(key)
+                return result ? JSON.parse(result) : null
+            },
+            set: async (key: string, value: any, maxAge: number) => {
+                await redis.set(key, JSON.stringify(value), 'PX', maxAge)
+            },
+            destroy: async (key: string) => {
+                await redis.del(key)
+            }
+        }
     }
 
     app.use(session(SESSION_CONFIG, app))
@@ -123,7 +121,6 @@ if (cluster.isPrimary) {
                 disableHeader: false
             })
         )
-        app.use(cache({ expire: 30 /* Cache time in seconds */ }))
         app.use(serve(process.env.FLIGHT_DIST_PATH || '../dist'))
         console.log('App served out of dist/ and available on port 3000')
     }
