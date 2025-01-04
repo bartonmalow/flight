@@ -1,6 +1,6 @@
 {
     "name": "flight",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A web server designed for running full stack, component based applications at enterprise scale.",
     "main": "flight.ts",
     "bin": {
@@ -22,10 +22,10 @@
     "dependencies": {
         "@koa/cors": "^5.0.0",
         "@koa/router": "^12.0.1",
-        "@vitejs/plugin-vue": "^5.1.3",
-        "@vue/language-plugin-pug": "^2.1.2",
-        "core-js": "^3.38.1",
-        "dotenv": "^16.4.5",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "@vue/language-plugin-pug": "^2.2.0",
+        "core-js": "^3.39.0",
+        "dotenv": "^16.4.7",
         "esbuild": "^0.23.1",
         "fast-glob": "3.3.2",
         "ioredis": "^5.4.2",
@@ -39,7 +39,7 @@
         "koa-send": "^5.0.1",
         "koa-session": "^6.4.0",
         "koa-static": "^5.0.0",
-        "unplugin-fonts": "^1.1.1",
+        "unplugin-fonts": "^1.3.1",
         "vite": "^5.0.0",
         "vite-plugin-vuetify": "^2.0.4",
         "yargs": "^17.7.2"
@@ -55,10 +55,10 @@
         "@types/koa-session": "^6.4.5",
         "@types/koa-static": "^4.0.4",
         "@types/node": "^20.14.8",
-        "eslint": "^9.6.0",
-        "eslint-plugin-vue": "^9.27.0",
-        "prettier": "3.3.2",
+        "eslint": "^9.17.0",
+        "eslint-plugin-vue": "^9.32.0",
+        "prettier": "^3.4.2",
         "ts-node": "^10.9.2",
-        "typescript": "^5.5.3"
+        "typescript": "^5.7.2"
     }
 }
