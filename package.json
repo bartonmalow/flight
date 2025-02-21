@@ -30,7 +30,7 @@
         "@vue/language-plugin-pug": "^2.2.0",
         "core-js": "^3.40.0",
         "dotenv": "^16.4.7",
-        "esbuild": "^0.24.2",
+        "esbuild": "^0.25.0",
         "fast-glob": "^3.3.3",
         "ioredis": "^5.4.2",
         "koa": "^2.15.3",
